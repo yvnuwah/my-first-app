@@ -11,14 +11,14 @@
 |
 */
 
-/*
+
 Route::get('/', function()
 {
 	return View::make('hello');
 });
-*/
 
-Route::get('/', 'BootstrapTestController@index');
+
+//Route::get('/', 'BootstrapTestController@index');
 
 //Route::get('signup', 'BootstrapTestController@signup');
 
