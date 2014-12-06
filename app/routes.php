@@ -17,6 +17,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('checkdb', 'BaseController@checkdb');
 
 //Route::get('/', 'BootstrapTestController@index');
 
