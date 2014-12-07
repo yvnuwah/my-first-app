@@ -31,7 +31,7 @@ return array(
 			// 'prefix'    => '',
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'laravel_db',
+			'database'  => 'laravel_auth',
 			'username'  => 'root',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
