@@ -7,6 +7,9 @@ class UsersController extends BaseController {
         $this->layout->content = View::make('users.register');
     }
     
+    public function postCreate() {
+    	
+    }
 
 
 }
