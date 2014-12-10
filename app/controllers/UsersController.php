@@ -5,6 +5,8 @@ class UsersController extends BaseController {
     
     public function __construct() {
     	$this->beforeFilter('csrf', array('on'=>'post'));
+    	// protect unauthorized users from getting to the dashboard
+    	$this->beforeFilter('auth', array('only'=>array('getDashboard')));
     }
 
     // get the register page
@@ -40,6 +42,22 @@ class UsersController extends BaseController {
     	//$this->layout->content = View::make('<span class="skimlinks-unlinked">users.login</span>');
 
     	$this->layout->content = View::make('users.login');
+    }
+
+    // function for logging a user in. redirects if login credentials are incorrect
+    public function postSignin() {
+    	if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
+    		return Redirect::to('users/dashboard')->with('message', 'You are now logged in!');
+    	}
+    	else {
+    		return Redirect::to('users/login')
+    				->with('message', 'Your username/password combination was incorrect')
+    				->withInput();
+    	}
+    }
+
+    public function getDashboard() {
+    	$this->layout->content = View::make('users.dashboard');
     }
 
 
